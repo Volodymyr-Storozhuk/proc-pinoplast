@@ -1,0 +1,22 @@
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    По маркам блоків
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_group_typeblock_kl' %}">Всі формовки</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_group_typeblock_1' %}">Формовка 1</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_group_typeblock_2' %}">Формовка 2</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Реєстр блоків
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_full_kl' %}">Всі формовки</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_full_1' %}">Формовка 1</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_full_2' %}">Формовка 2</a></li>
+                </ul>
+            </li>
+        </ul>

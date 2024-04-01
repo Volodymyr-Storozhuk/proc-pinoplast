@@ -1,0 +1,22 @@
+<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Всі цикли вспінення
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming' %}">Всі вспінювачі</a></li>
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming_line_1' %}">Вспінювач 1</a></li>
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming_line_2' %}">Вспінювач 2</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Тільки перше вспінення
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming_cycle_0' %}">Всі вспінювачі</a></li>
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming_line_1_cycle_0' %}">Вспінювач 1</a></li>
+            <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming_line_2_cycle_0' %}">Вспінювач 2</a></li>
+        </ul>
+    </li>
+</ul>

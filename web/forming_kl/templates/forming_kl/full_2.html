@@ -1,0 +1,27 @@
+{% extends "main/layout.html" %}
+
+{% block body %}
+
+<!-- <h1>Render date: {{ render_date }}</h1> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      {% include "forming_kl/menu_button_first.html" %}
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        
+        {% include "forming_kl/menu.html" %}
+        
+        <form class="d-flex" method="post" action="{% url 'forming_kl:forming_full_2' %}">
+            {% csrf_token %}
+            {% include "forming_kl/menu_button_date.html" %}
+        </form>
+      </div>
+    </div>
+  </nav>
+    
+<h4><span class="badge bg-secondary">Формовка 2</span></h2>
+{% include "forming_kl/full_header.html" %}
+{% for row in rows_f2 %}
+    {% include "forming_kl/full_data.html" %}
+{% endfor %}
+
+{% endblock %}

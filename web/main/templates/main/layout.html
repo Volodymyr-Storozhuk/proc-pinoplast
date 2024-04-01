@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  {% load static %}
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <link type="image/x-icon" href="{% static 'main/img/favicon.ico' %}" rel="shortcut icon">
+  <title>Eurobud</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'main/img/logo.png' %}" alt="Eurobud" width="30" height="30">
+      </a>
+      <!-- <a class="navbar-brand" href="https://www.eurobud.ua">Eurobud</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li> -->
+          {% for group in request.user.groups.all %}
+            {% if group.name == 'KL' %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Калуш
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'foaming_kl:foaming' %}">Впінення</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kl:forming_group_typeblock_kl' %}">Формовка</a></li>
+                </ul>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% for group in request.user.groups.all %}
+            {% if group.name == 'KR' %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Кропивницький
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'foaming_kr:foaming' %}">Впінення</a></li>
+                  <li><a class="dropdown-item" href="{% url 'forming_kr:forming_group_typeblock_kr' %}">Формовка</a></li>
+                </ul>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Профіль</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'auth_app:show_user_page' %}">Профіль користувача</a></li>
+              <li><a class="dropdown-item" href="{% url 'auth_app:change_password_page' %}">Зміна пароля</a></li>
+              {% if user.is_superuser %}
+                <li><a class="dropdown-item" href="{% url 'auth_app:add_user_page' %}">Реєстрація користувача</a></li>
+                <li><a class="dropdown-item" href="{% url 'auth_app:test_page' %}">Тестова сторінка</a></li>
+              {% endif %}
+              {% if user.is_staff %}
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/admin">Адміністрування</a></li>
+              {% endif %}
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="{% url 'auth_app:logout' %}">Вихід</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link" href="{% url 'auth_app:logout' %}">Вихід</a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <!-- <a class="nav-link active" href="{% url 'auth_app:logout' %}">Вихід</a> -->
+          <a class="nav-link active" href="{% url 'auth_app:show_user_page' %}">{{ user.first_name }} {{ user.last_name }}</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+  <div class="d-grid gap-2 col-10 mx-auto">
+    {% block body %}
+    {% endblock %}
+  </div>
+  <br>
+
+</body>
+
+</html>

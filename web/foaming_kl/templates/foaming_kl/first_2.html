@@ -1,0 +1,26 @@
+{% extends "main/layout.html" %}
+
+{% block body %}
+
+<!-- <h1>Render date: {{ render_date }}</h1> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        {% include "foaming_kl/menu_button_first.html" %}
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            {% include "foaming_kl/menu.html" %}    
+            <form class="d-flex" method="GET" action="{% url 'foaming_kl:foaming_line_2_cycle_0' %}">
+                {% csrf_token %}
+                {% include "foaming_kl/menu_button_date.html" %}
+            </form>
+        </div>
+    </div>
+</nav>
+
+<h4><span class="badge bg-secondary">Вспінювач 2</span></h2>
+{% include "foaming_kl/full_header.html" %}    
+{% for row in rows_v2 %}
+    {% include "foaming_kl/full_data.html" %}
+{% endfor %}
+{% include "foaming_kl/data_total_2.html" %}
+
+{% endblock %}

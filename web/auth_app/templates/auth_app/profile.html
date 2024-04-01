@@ -1,0 +1,36 @@
+{% extends "main/layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto bg-light my-4 p-4 rounded">
+            <form class="needs-validation" method="POST" action="{% url 'auth_app:show_user_page' %}">
+                {% csrf_token %}
+                <h2>Профіль користувача</h2>
+                <hr>
+                <div class="mb-3">
+                    <label>Логін</label>
+                    <input class="form-control" type="text" value="{{ user.username }}" disabled readonly>
+                </div>
+                <div class="mb-3">
+                    <label>Ім'я користувача</label>
+                    <input type="text" class="form-control" placeholder="Ім'я користувача" value="{{ user.first_name }}" name="first_name">    
+                </div>
+                <div class="mb-3">
+                    <label>Прізвише користувача</label>
+                    <input type="text" class="form-control" placeholder="Прізвище користувача" value="{{ user.last_name }}" name="last_name">    
+                </div>
+                <div class="mb-3">
+                    <label>Поштова адреса користувача</label>
+                    <input type="text" class="form-control" placeholder="Поштова адреса користувача" value="{{ user.email }}" name="email">    
+                </div>
+                <div class="d-grid gap-2 col-5 mx-auto">
+                    <input class="btn btn-primary w-10" type="submit" value="Зберегти">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

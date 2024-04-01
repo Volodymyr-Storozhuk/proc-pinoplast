@@ -1,0 +1,24 @@
+<span class="border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 text-left">
+                {{ row.datetimestart }}
+            </div>
+            <div class="col-3 text-left">
+                {{ row.datetimestop }}
+            </div>
+            <div class="col-1 text-center">
+                {{ row.r_mpurecipe }}
+            </div>
+            <div class="col-2 text-left">
+                {{ row.r_manufacturer }}
+            </div>
+            <div class="col-2 text-left">
+                {{ row.r_type }}
+            </div>
+            <div class="col-1 text-right">
+                {{ row.rawmatweightactual|floatformat:2 }}
+            </div>
+        </div>
+    </div>
+</span>

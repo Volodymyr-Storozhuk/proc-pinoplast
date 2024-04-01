@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Увага!</title>
+  {% load static %}
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</head>
+
+<body>
+    <br>
+    <div class="container text-center">
+        <div class="alert alert-danger" role="alert">
+            Не знайдено користувача або неправильний пароль!
+        </div>
+        <p><a href="{% url 'auth_app:login_page' %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Повернутись</a></p>
+    </div>
+</body>
+
+</html>

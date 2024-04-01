@@ -1,0 +1,45 @@
+
+services:
+  web:
+    build: ./web
+    container_name: web
+    image: web_image
+    command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    # command: python manage.py runserver 0.0.0.0:8000
+    # volumes:
+    #   - ./web/:/home/www/web/
+    # ports:
+    #   - 8000:8000
+    volumes:
+      - static_volume:/home/www/web/staticfiles
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    build: ./postgres
+    # image: postgres:15
+    container_name: db
+    image: postgres_image
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    image: nginx_image
+    volumes:
+      - static_volume:/home/www/web/staticfiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
